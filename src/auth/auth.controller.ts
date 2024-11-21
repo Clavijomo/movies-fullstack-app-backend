@@ -17,7 +17,7 @@ export class AuthController {
     }
 
     @Post('register')
-    async registerUser(@Body() user: RegisterUserDto) {
-        return this.authService.signUp(user);
+    async registerUser(@Body() registerDto: RegisterUserDto) {
+        return this.authService.signUp(registerDto);
     }
 }

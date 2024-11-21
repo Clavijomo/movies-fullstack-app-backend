@@ -1,12 +1,11 @@
-import { HttpCode, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { users } from 'src/data/users';
+import { User, users } from 'src/data/users';
 import { RegisterUserDto } from './dto/register-user.dto';
-import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
-    private users = users;
+    private users: User[] = users;
     constructor(private readonly JwtService: JwtService) { }
 
     async validateUser(userObject: RegisterUserDto) {
