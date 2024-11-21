@@ -1,6 +1,6 @@
-import { AuthDto } from 'src/auth/dto/create-user.dto'
+import { RegisterUserDto } from "src/auth/dto/register-user.dto";
 
-export const users: AuthDto[] = [
+export const users: RegisterUserDto[] = [
     {
         email: 'hola123@gmail.com',
         password: '1223',
