@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { MoviesService } from './movies.service';
-import { MovieFound, RequestMovieRecommends } from './dto/movie';
+import { MovieFound, RequestMovieRecommends } from './interface/movie';
 
 @Controller('movies')
 export class MoviesController {

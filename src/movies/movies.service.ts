@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Movie, movies } from '../data/movies'
-import { MovieFound, ResponseMovie } from './dto/movie';
+import { MovieFound, ResponseMovie } from './interface/movie';
 
 @Injectable()
 export class MoviesService {
