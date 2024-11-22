@@ -47,7 +47,7 @@ npm install
 ### 3. Configurar variables de entorno
 Crea un archivo `.env` en el directorio raíz con las siguientes configuraciones:
 ```env
-PORT=3000
+PORT=4000
 JWT_SECRET=secretKey
 JWT_EXPIRATION=3600
 ```
@@ -167,7 +167,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: 'secretKey',
+      secretOrKey: 'secretKeyFullstack',
     });
   }
 
