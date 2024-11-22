@@ -48,7 +48,7 @@ npm install
 Crea un archivo `.env` en el directorio raíz con las siguientes configuraciones:
 ```env
 PORT=4000
-JWT_SECRET=secretKey
+JWT_SECRET=secretKeyFullstack
 JWT_EXPIRATION=3600
 ```
 
@@ -101,12 +101,12 @@ JWT_EXPIRATION=3600
 
 #### 1. **Registro**
 - **Método**: `POST`
-- **Ruta**: `/auth/signup`
+- **Ruta**: `/auth/register`
 - **Body**:
   ```json
   {
     "email": "user@example.com",
-    "password": "Password123!"
+    "password": "Password1234567!"
   }
   ```
 - **Validaciones**:
@@ -191,7 +191,7 @@ src/
 │   ├── movies.data.ts
 │   ├── users.data.ts
 ├── movies/
-│   ├── dto/
+│   ├── interface/
 │   │   └── movie.ts
 │   ├── movies.controller.ts
 │   ├── movies.module.ts
