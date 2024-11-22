@@ -1,19 +1,36 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { movies } from '../data/movies'
+import { Movie, movies } from '../data/movies'
+import { MovieFound, ResponseMovie } from './dto/movie';
 
 @Injectable()
 export class MoviesService {
-    private movies = movies;
+
+    private movies: Movie[] = movies;
     getAllMovies() {
         return movies;
     }
 
-    getMovie(id: number) {
-        const movieFound = this.movies.find(movie => movie.id === id);
+    getMovie(movie: MovieFound) {
+        const movieFound = this.movies.find(item => item.id === movie.movieId);
         if (!movieFound) {
-            return new NotFoundException(`Movie with id ${id} not found`);
+            return new NotFoundException(`Movie with id ${movie.movieId} not found`);
         }
 
-        return movieFound;
+        const responseMovie: Movie = movieFound
+
+        return responseMovie
+    }
+
+    getRecommendMovies(idsMovies: number[]) {
+        let idsFound = [];
+        idsMovies.forEach((_, index) => {
+            this.movies.forEach((item, i) => {
+                if (idsMovies[index] === item.id) {
+                    idsFound.push(item);
+                }
+            })
+        })
+
+        return idsFound
     }
 }

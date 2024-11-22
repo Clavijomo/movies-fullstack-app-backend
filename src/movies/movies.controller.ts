@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { MoviesService } from './movies.service';
+import { MovieFound, RequestMovieRecommends } from './dto/movie';
 
 @Controller('movies')
 export class MoviesController {
@@ -10,8 +11,13 @@ export class MoviesController {
         return this.movies.getAllMovies();
     }
 
-    @Get('/:id')
-    getMovie(@Param('id') id: string) {
-        return this.movies.getMovie(parseInt(id));
+    @Post('/movie')
+    getMovie(@Body() movie: MovieFound) {
+        return this.movies.getMovie(movie);
+    }
+
+    @Post('/recommend')
+    getRecommendsMovies(@Body() idsMovies: RequestMovieRecommends) {
+        return this.movies.getRecommendMovies(idsMovies.recommend);
     }
 }
