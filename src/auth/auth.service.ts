@@ -1,15 +1,15 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User, users } from 'src/data/users';
+import { User, users } from '../data/users';
 import { RegisterUserDto } from './dto/register-user.dto';
 
 @Injectable()
 export class AuthService {
-    private users: User[] = users;
+    private usersAuth: User[] = users;
     constructor(private readonly JwtService: JwtService) { }
 
     async validateUser(userObject: RegisterUserDto) {
-        const userExist = this.users.find(user => user.email === userObject.email);
+        const userExist = this.usersAuth.find(user => user.email === userObject.email);
         if (userExist && userExist.password === userObject.password) {
             const { password, ...result } = userExist;
             return result;
@@ -26,12 +26,12 @@ export class AuthService {
     }
 
     async signUp(user: RegisterUserDto) {
-        const existUser = this.users.find(us => us.email === user.email);
+        const existUser = this.usersAuth.find(us => us.email === user.email);
         if (existUser) {
             throw new UnauthorizedException('Este email ya existe');
         }
 
-        this.users.push(user);
+        this.usersAuth.push(user);
         const payload = { email: user.email }
         return {
             access_token: this.JwtService.sign(payload)
