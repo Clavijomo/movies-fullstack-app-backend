@@ -62,6 +62,10 @@ JWT_EXPIRATION=3600
   npm run start:prod
   ```
 
+- **Ejecucion de pruebas**:
+  ```bash
+  npm run test
+
 ---
 
 ## Endpoints disponibles
@@ -183,6 +187,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 ```
 src/
 ├── auth/
+    ├── auth.controller.spec.ts
 │   ├── auth.controller.ts
 │   ├── auth.module.ts
 │   ├── auth.service.ts
@@ -193,6 +198,7 @@ src/
 ├── movies/
 │   ├── interface/
 │   │   └── movie.ts
+│   ├── movies.controller.spec.ts
 │   ├── movies.controller.ts
 │   ├── movies.module.ts
 │   ├── movies.service.ts
